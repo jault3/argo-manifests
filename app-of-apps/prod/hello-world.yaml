@@ -8,6 +8,7 @@ metadata:
 spec:
   destination:
     name: in-cluster
+    namespace: hello-world
   project: default
   source:
     repoURL: https://helm.github.io/examples
