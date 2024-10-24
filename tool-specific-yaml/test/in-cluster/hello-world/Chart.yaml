@@ -1,0 +1,9 @@
+apiVersion: v2
+name: hello-world
+description: hello-world subchart
+type: application
+version: v0.1.0
+dependencies:
+- name: hello-world
+  repository: https://helm.github.io/examples
+  version: 0.1.0

@@ -1,0 +1,9 @@
+apiVersion: v2
+name: kubernetes-dashboard
+description: kubernetes-dashboard subchart
+type: application
+version: v0.1.0
+dependencies:
+- name: kubernetes-dashboard
+  repository: https://kubernetes.github.io/dashboard/
+  version: 7.9.0
