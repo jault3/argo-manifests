@@ -1,31 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
-kind: ApplicationSet
+kind: Application
 metadata:
   name: app-of-apps-test
   namespace: argocd
 spec:
-  goTemplate: true
-  goTemplateOptions: ["missingkey=error"]
-  generators:
-    - git:
-        repoURL: https://github.com/jault3/argo-manifests.git
-        revision: main
-        directories:
-          - path: 'app-of-apps/test/*.yaml'
-  template:
-    metadata:
-      # the -wrapper is required to avoid conflicts with the name
-      # defined in app-of-apps/test/app1.yaml
-      name: '{{.path.path}}-{{.path.basename}}-wrapper'
-    spec:
-      project: 'default'
-      source:
-        repoURL: https://github.com/jault3/argo-manifests.git
-        targetRevision: main
-        path: '{{.path.path}}'
-      destination:
-        name: in-cluster
-      # syncPolicy:
-      #   automated:
-      #     prune: true
-      #     selfHeal: false
+  destination:
+    name: in-cluster
+  project: 'default'
+  source:
+    repoURL: https://github.com/jault3/argo-manifests.git
+    targetRevision: main
+    path: 'app-of-apps/test/'
+  # syncPolicy:
+  #   automated:
+  #     prune: true
+  #     selfHeal: false

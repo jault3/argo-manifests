@@ -16,8 +16,8 @@ spec:
     helm:
       releaseName: kubernetes-dashboard
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+    # automated:
+    #   prune: true
+    #   selfHeal: true
     syncOptions:
       - RespectIgnoreDifferences=true

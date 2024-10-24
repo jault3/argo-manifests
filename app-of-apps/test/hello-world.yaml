@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app1-test
+  name: hello-world-test
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -10,14 +10,14 @@ spec:
     name: in-cluster
   project: default
   source:
-    repoURL: https://kubernetes.github.io/dashboard/
-    targetRevision: 7.9.0
-    chart: kubernetes-dashboard
+    repoURL: https://helm.github.io/examples
+    targetRevision: 0.1.0
+    chart: hello-world
     helm:
-      releaseName: kubernetes-dashboard
+      releaseName: hello-world
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+    # automated:
+    #   prune: true
+    #   selfHeal: true
     syncOptions:
       - RespectIgnoreDifferences=true
