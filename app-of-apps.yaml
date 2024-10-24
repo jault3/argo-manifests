@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app-of-apps-test
+  name: app-of-apps
   namespace: argocd
 spec:
   destination:
@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://github.com/jault3/argo-manifests.git
     targetRevision: main
-    path: 'app-of-apps/test/'
+    path: 'app-of-apps/cluster-test/'
   # syncPolicy:
   #   automated:
   #     prune: true
