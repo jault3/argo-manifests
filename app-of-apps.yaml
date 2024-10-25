@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: app-of-apps
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     name: in-cluster
@@ -11,7 +13,7 @@ spec:
     repoURL: https://github.com/jault3/argo-manifests.git
     targetRevision: main
     path: 'app-of-apps/cluster-test/'
-  # syncPolicy:
-  #   automated:
-  #     prune: true
-  #     selfHeal: false
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false

@@ -24,8 +24,9 @@ spec:
             proxy_listen: '0.0.0.0:8443 http2 ssl'
             status_listen: '0.0.0.0:8100'
   syncPolicy:
-    # automated:
-    #   prune: true
-    #   selfHeal: true
+    automated:
+      prune: true
+      selfHeal: false
     syncOptions:
+      - CreateNamespace=true
       - RespectIgnoreDifferences=true

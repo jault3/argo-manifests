@@ -17,8 +17,9 @@ spec:
     helm:
       releaseName: hello-world
   syncPolicy:
-    # automated:
-    #   prune: true
-    #   selfHeal: true
+    automated:
+      prune: true
+      selfHeal: false
     syncOptions:
+      - CreateNamespace=true
       - RespectIgnoreDifferences=true

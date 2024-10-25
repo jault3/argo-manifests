@@ -9,7 +9,7 @@ spec:
   generators:
     - git:
         directories:
-          - path: tool-specific-yaml/test/*/*
+          - path: tool-specific-yaml/test/*/*/*
         repoURL: https://github.com/jault3/argo-manifests.git
         revision: main
   template:
@@ -22,9 +22,12 @@ spec:
         targetRevision: main
         path: '{{.path.path}}'
       destination:
-        name: '{{index .path.segments 1}}'
-        # namespace: '{{index .path.segments 3}}'
-      # syncPolicy:
-      #   automated:
-      #     prune: true
-      #     selfHeal: false
+        name: '{{index .path.segments 2}}'
+        namespace: '{{index .path.segments 3}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: false
+        syncOptions:
+          - CreateNamespace=true
+          - RespectIgnoreDifferences=true
